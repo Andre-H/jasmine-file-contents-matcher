@@ -1,10 +1,10 @@
 {
-  "name": "jasmine-file-contents-matcher",
+  "name": "node-jasmine-file-contents-matcher",
   "version": "0.1.0",
   "description": "A Jasmine 2 custom matcher that compares a result against the contents of a file.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
   "keywords": [
     "jasmine",
     "matcher",
+    "node-jasmine",
     "file"
   ],
   "author": "Andre-H",
@@ -20,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/Andre-H/jasmine-file-contents-matcher/issues"
   },
-  "homepage": "https://github.com/Andre-H/jasmine-file-contents-matcher#readme"
+  "homepage": "https://github.com/Andre-H/jasmine-file-contents-matcher#readme",
+  "dependencies": {
+    "promise": "^7.1.1"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jshint": "^2.9.2"
+  }
 }
