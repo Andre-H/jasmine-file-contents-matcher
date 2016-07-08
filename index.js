@@ -1,5 +1,4 @@
 "use strict";
-var fileExpectedResults = require('./src/expected-result-file.js');
 var Promise = require('promise');
 var fs = require('fs');
 var path = require('path');
