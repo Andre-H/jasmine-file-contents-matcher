@@ -31,7 +31,7 @@ var matchers = {
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)/g,'\n'), actual.toString().replace(/(\r\n)/g,'\n'))){
                         return done();//{pass:true};
                     }
-                    done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Equal '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");//('kaboing');
+                    done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Equal '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");
                 }).catch(function(error) {
                     done.fail(error);
                 });
@@ -54,7 +54,7 @@ var matchers = {
 
                 readFilePromise.then(function(actual) {
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)/g,'\n'), actual.toString().replace(/(\r\n)/g,'\n'))){
-                        done.fail("Expected '" + actual + "' to Equal '" + expected + "'.");//('kaboing');
+                        done.fail("Expected '" + actual + "' NOT to Equal '" + expected + "'.");
                     }
                     return done();//{pass:true};
                 }).catch(function(error) {
@@ -85,7 +85,7 @@ var matchers = {
                     if(defaultMatchers.contains(expected.toString().replace(/(\r\n)/g,'\n'),actual.toString().replace(/(\r\n)/g,'\n'))){
                         return done();//{pass:true};
                     }
-                    done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Contain '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");//('kaboing');
+                    done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Contain '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");
                 }).catch(function(error) {
                     done.fail(error);
                 });
@@ -108,7 +108,7 @@ var matchers = {
 
                 readFilePromise.then(function(actual) {
                     if(defaultMatchers.contains(expected.toString().replace(/(\r\n)/g,'\n'),actual.toString().replace(/(\r\n)/g,'\n'))){
-                        done.fail("Expected '" + actual + "' to Contain '" + expected + "'.");//('kaboing');
+                        done.fail("Expected '" + actual + "' NOT to Contain '" + expected + "'.");
                     }
                     return done();//{pass:true};
                 }).catch(function(error) {
@@ -139,7 +139,7 @@ var matchers = {
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)|\n/g,''), actual.toString().replace(/(\r\n)|\n/g,''))){
                         return done();//{pass:true};
                     }
-                    done.fail("Expected '" + expected.toString().replace(/(\r\n)|\n/g,'') + "' to Equal '" + actual.toString().replace(/(\r\n)|\n/g,'') + "'.");//('kaboing');
+                    done.fail("Expected '" + expected.toString().replace(/(\r\n)|\n/g,'') + "' to Equal '" + actual.toString().replace(/(\r\n)|\n/g,'') + "'.");
                 }).catch(function(error) {
                     done.fail(error);
                 });
@@ -162,7 +162,7 @@ var matchers = {
 
                 readFilePromise.then(function(actual) {
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)|\n/g,''), actual.toString().replace(/(\r\n)|\n/g,''))){
-                        done.fail("Expected '" + actual + "' to Equal '" + expected + "'.");//('kaboing');
+                        done.fail("Expected '" + actual.toString().replace(/(\r\n)|\n/g,'') + "' NOT to Equal '" + expected.toString().replace(/(\r\n)|\n/g,'') + "'.");
                     }
                     return done();//{pass:true};
                 }).catch(function(error) {
@@ -173,6 +173,8 @@ var matchers = {
         };
     }
 };
+
+module.exports = matchers;
 
 beforeEach(function() {
     jasmine.addMatchers(matchers);
