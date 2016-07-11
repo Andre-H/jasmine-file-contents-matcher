@@ -22,7 +22,7 @@ describe("Custom matcher toEqualFileContentsIgnoreLineBreaks", function() {
 
     it('should fail matcher when file content is not identical to the expected', function (done){
         spyOn(done, 'fail').and.callFake(function(message) {
-            expect(message.replace(/(\r\n)/g,'\n')).toEqual("Expected 'This is not whats in the file' to Equal 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ'.");
+            expect(message).toEqual("Expected 'This is not whats in the file' to Equal 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ'.");
             done();
         });
         expect('This is not whats in the file').toEqualFileContentsIgnoreLineBreaks('a-menu-from-a-website', done);
@@ -30,7 +30,7 @@ describe("Custom matcher toEqualFileContentsIgnoreLineBreaks", function() {
 
     it('should fail negative matcher when file content is identical to the expected', function (done){
         spyOn(done, 'fail').and.callFake(function(message) {
-            expect(message.replace(/(\r\n)/g,'\n')).toEqual("Expected 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ' NOT to Equal 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ'.");
+            expect(message).toEqual("Expected 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ' NOT to Equal 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ'.");
             done();
         });
         expect('Configuration File Reference\nAPI\nStyle Guide\nSyntax vs JS Syntax\nSupport\nPlugins\nTimeouts\n' +
