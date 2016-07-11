@@ -4,7 +4,7 @@
   "description": "A Jasmine 2 custom matcher that compares a result against the contents of a file.",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "istanbul cover --include-all-sources node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "promise": "^7.1.1"
   },
   "devDependencies": {
+    "istanbul": "^0.4.4",
     "jasmine": "^2.4.1",
     "jshint": "^2.9.2"
   }

@@ -20,4 +20,22 @@ describe("Custom matcher toEqualFileContentsIgnoreLineBreaks", function() {
             .not.toEqualFileContentsIgnoreLineBreaks('a-menu-from-a-website', done);
     });
 
+    it('should fail matcher when file content is not identical to the expected', function (done){
+        spyOn(done, 'fail').and.callFake(function(message) {
+            expect(message).toEqual("Expected 'This is not whats in the file' to Equal 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ'.");
+            done();
+        });
+        expect('This is not whats in the file').toEqualFileContentsIgnoreLineBreaks('a-menu-from-a-website', done);
+    });
+
+    it('should fail negative matcher when file content is identical to the expected', function (done){
+        spyOn(done, 'fail').and.callFake(function(message) {
+            expect(message).toEqual("Expected 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ' NOT to Equal 'Configuration File ReferenceAPIStyle GuideSyntax vs JS SyntaxSupportPluginsTimeoutsControl FlowHow It WorksUpgrading to Jasmine 2.xMobile SetupFAQ'.");
+            done();
+        });
+        expect('Configuration File Reference\nAPI\nStyle Guide\nSyntax vs JS Syntax\nSupport\nPlugins\nTimeouts\n' +
+            'Control Flow\nHow It Works\nUpgrading to Jasmine 2.x\nMobile Setup\nFAQ')
+            .not.toEqualFileContentsIgnoreLineBreaks('a-menu-from-a-website', done);
+    });
+
 });
