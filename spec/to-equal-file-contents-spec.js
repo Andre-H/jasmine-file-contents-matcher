@@ -32,4 +32,24 @@ describe("Test custom matcher toContainFileContents", function() {
             .not.toEqualFileContents('a-menu-from-a-website', done);
     });
 
+    it('should not match when no file corresponding to the identifier exists', function (done) {
+        spyOn(done, 'fail').and.callFake(function(message) {
+            expect(message).toMatch("Error: ENOENT: no such file or directory, open '.+there-is-no-file-for-this-identifier\.txt'");
+            done();
+        });
+        expect('Configuration File Reference\nAPI\nStyle Guide\nSyntax vs JS Syntax\nSupport\nPlugins\nTimeouts\n'+
+            'Control Flow\nHow It Works\nUpgrading to Jasmine 2.x\nMobile Setup\nFAQ')
+            .toEqualFileContents('there-is-no-file-for-this-identifier', done);
+    });
+
+    it('should fail negative compare when no file corresponding to the identifier exists', function (done) {
+        spyOn(done, 'fail').and.callFake(function(message) {
+            expect(message).toMatch("Error: ENOENT: no such file or directory, open '.+there-is-no-file-for-this-identifier\.txt'");
+            done();
+        });
+        expect('Configuration File Reference\nAPI\nStyle Guide\nSyntax vs JS Syntax\nSupport\nPlugins\nTimeouts\n'+
+            'Control Flow\nHow It Works\nUpgrading to Jasmine 2.x\nMobile Setup\nFAQ')
+            .not.toEqualFileContents('there-is-no-file-for-this-identifier', done);
+    });
+
 });
