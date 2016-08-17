@@ -1,5 +1,15 @@
 # language setting
 language: node_js
 # Running the tests with npm
-script:
-  - npm test
+
+env:
+  - XUNIT_FILE=shippable/testresults/result.xml
+
+build:
+  ci:
+    - npm install
+    - npm test
+
+  post_ci:
+    - ./node_modules/.bin/istanbul cover grunt -- -u tdd
+    - ./node_modules/.bin/istanbul cobertura --dir shippable/codecoverage/
