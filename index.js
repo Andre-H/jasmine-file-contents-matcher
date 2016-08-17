@@ -27,11 +27,16 @@ var matchers = {
                 });
 
                 readFilePromise.then(function(actual) {
+
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)/g,'\n'), actual.toString().replace(/(\r\n)/g,'\n'))){
+                        deleteDidNotMatchFile(fullFilePath);
                         return done();//{pass:true};
                     }
+
+                    writeDidNotMatchFile(fullFilePath, expected);
                     done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Equal '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");
                 }).catch(function(error) {
+                    writeDidNotMatchFile(fullFilePath, expected);
                     done.fail(error);
                 });
 
@@ -81,12 +86,20 @@ var matchers = {
                 });
 
                 readFilePromise.then(function(actual) {
+
                     if(defaultMatchers.contains(expected.toString().replace(/(\r\n)/g,'\n'),actual.toString().replace(/(\r\n)/g,'\n'))){
+                        deleteDidNotMatchFile(fullFilePath);
                         return done();//{pass:true};
                     }
+
+                    writeDidNotMatchFile(fullFilePath, expected);
                     done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Contain '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");
+
                 }).catch(function(error) {
+
+                    writeDidNotMatchFile(fullFilePath, expected);
                     done.fail(error);
+
                 });
 
                 return{pass:true};
@@ -135,11 +148,18 @@ var matchers = {
                 });
 
                 readFilePromise.then(function(actual) {
+
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)|\n/g,''), actual.toString().replace(/(\r\n)|\n/g,''))){
+                        deleteDidNotMatchFile(fullFilePath);
                         return done();//{pass:true};
                     }
+                    writeDidNotMatchFile(fullFilePath, expected);
+
                     done.fail("Expected '" + expected.toString().replace(/(\r\n)|\n/g,'') + "' to Equal '" + actual.toString().replace(/(\r\n)|\n/g,'') + "'.");
                 }).catch(function(error) {
+
+                    writeDidNotMatchFile(fullFilePath, expected);
+
                     done.fail(error);
                 });
 
@@ -172,6 +192,35 @@ var matchers = {
         };
     }
 };
+
+function deleteDidNotMatchFile(fullFilePath) {
+    try{
+        var failFilePath = fullFilePath.replace('.txt', '.didnotmatch.txt');
+        fs.unlinkSync(failFilePath)
+        return 0;
+    }
+    catch (e){
+        if (!e.message.includes('ENOENT')) {
+            console.log('Tried to remove an unused placeholder file: ' + failFilePath + ', but an error occured:' + e +
+                '. This should not affect any test results.');
+        }
+        return e;
+    }
+}
+
+
+function writeDidNotMatchFile(fullFilePath, expected) {
+    try{
+        var failFilePath = fullFilePath.replace('.txt', '.didnotmatch.txt');
+        fs.writeFileSync(failFilePath, expected);
+        console.log('A file was generated: ' + failFilePath);
+        return 0;
+    }
+    catch (e){
+        console.log('Tried to create a expected result file: ' + failFilePath + ', but an error occurred: ' + e);
+        return e;
+    }
+}
 
 module.exports = matchers;
 
