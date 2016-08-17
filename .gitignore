@@ -1,3 +1,5 @@
 node_modules
 .idea/
 coverage/
+resources/expectedresults/a-menu-from-a-website.didnotmatch.txt
+resources/expectedresults/there-is-no-file-for-this-identifier.didnotmatch.txt
