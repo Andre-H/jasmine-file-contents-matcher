@@ -2,6 +2,7 @@
 A Jasmine 2 custom matcher that compares a result against the contents of a file.
 
 Build status: [![Run Status](https://api.shippable.com/projects/5784213e3be4f4faa56c79de/badge?branch=master)](https://app.shippable.com/projects/5784213e3be4f4faa56c79de)
+
 Test coverage: [![Coverage Badge](https://api.shippable.com/projects/5784213e3be4f4faa56c79de/coverageBadge?branch=master)](https://app.shippable.com/projects/5784213e3be4f4faa56c79de)
 
 ## Installation
@@ -40,11 +41,13 @@ it('should not match when the file content doesn`t contain the expected string',
 The filenames must be whatever is passed as the first parameter in the matcher call plus the `'.txt'` extension. `resources/expectedresults/file-name.txt` in the examples above.
 
 The following matchers are available
-------------------------------------
 
 .toEqualFileContents
+
 .toContainFileContents
+
 .toEqualFileContentsIgnoreLineBreaks
+
 .toContainFileContentsIgnoreLineBreaks
 
 
