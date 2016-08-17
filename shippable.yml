@@ -1,5 +1,5 @@
 # language setting
 language: node_js
-# Running the tests with grunt
+# Running the tests with npm
 script:
   - npm test
