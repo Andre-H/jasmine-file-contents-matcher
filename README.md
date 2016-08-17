@@ -25,10 +25,9 @@ it('should match when the file content is identical to the expected', function (
 it('should match when the file content contains the expected', function (done) {
     expect('a string').toContainFileContents('file-name', done);
 });
-```
 
-You can use the .not modifier
-```javascript
+//You can use the .not modifier
+
 it('should not match when file is not equal contain expected string', function(done) {
     expect('Not going to match').not.toEqualFileContents('file-name', done);
 });
