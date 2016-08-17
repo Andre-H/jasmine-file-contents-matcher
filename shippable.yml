@@ -11,4 +11,4 @@ build:
     - npm test
 
   post_ci:
-    - ./node_modules/.bin/istanbul cobertura --dir shippable/codecoverage/
+    - ./node_modules/.bin/istanbul report --dir shippable/codecoverage/
