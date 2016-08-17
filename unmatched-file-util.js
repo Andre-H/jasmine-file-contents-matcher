@@ -16,6 +16,9 @@ exports.deleteDidNotMatchFile = function (fullFilePath){
         return 0;
     }
     catch (e){
+        console.log('e:'+e);
+        console.log('e.message:'+ e.message);
+        console.log('e.message.includes:'+e.message.includes);
         if (!e.message.includes('ENOENT')) {
             console.log('Tried to remove an unused placeholder file: ' + failFilePath + ', but an error occured:' + e +
                 '. This should not affect any test results.');
