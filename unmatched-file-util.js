@@ -1,6 +1,9 @@
 var fs = require('fs');
 
 exports.deleteDidNotMatchFile = function (fullFilePath){
+    if(fullFilePath == null){
+        return new Error("TypeError");
+    }
     try{
         console.log('fullFilePath:'+fullFilePath);
         var failFilePath = fullFilePath.replace('.txt', '.didnotmatch.txt');
