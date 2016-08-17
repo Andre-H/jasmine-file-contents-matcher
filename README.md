@@ -40,7 +40,7 @@ it('should not match when the file content doesn`t contain the expected string',
 
 The filenames must be whatever is passed as the first parameter in the matcher call plus the `'.txt'` extension. `resources/expectedresults/file-name.txt` in the examples above.
 
-The following matchers are available
+###The following matchers are available
 
 .toEqualFileContents
 
