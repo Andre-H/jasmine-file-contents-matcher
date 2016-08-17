@@ -2,8 +2,14 @@ var fs = require('fs');
 
 exports.deleteDidNotMatchFile = function (fullFilePath){
     try{
+        console.log('fullFilePath:'+fullFilePath);
         var failFilePath = fullFilePath.replace('.txt', '.didnotmatch.txt');
-        fs.unlinkSync(failFilePath)
+
+        console.log('failFilePath:'+failFilePath);
+        console.log('fs:'+fs);
+        console.log('fs.unlinkSync:'+fs.unlinkSync);
+
+        fs.unlinkSync(failFilePath);
         return 0;
     }
     catch (e){
