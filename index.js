@@ -13,9 +13,7 @@ var matchers = {
     toEqualFileContents: function(defaultMatchers) {
         return {
             compare: function(expected, uniqueIdentifier, done) {
-
                 var fullFilePath = path.resolve(expectedResultsFolder, sanitizeFilename(uniqueIdentifier) + '.txt');
-
                 var readFilePromise = new Promise(function(resolve, reject) {
                     fs.readFile(fullFilePath, function(err, data) {
                         if (err) {
@@ -25,27 +23,21 @@ var matchers = {
                         }
                     });
                 });
-
                 readFilePromise.then(function(actual) {
-
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)/g,'\n'), actual.toString().replace(/(\r\n)/g,'\n'))){
                         deleteDidNotMatchFile(fullFilePath);
                         return done();//{pass:true};
                     }
-
                     writeDidNotMatchFile(fullFilePath, expected);
                     done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Equal '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");
                 }).catch(function(error) {
                     writeDidNotMatchFile(fullFilePath, expected);
                     done.fail(error);
                 });
-
                 return{pass:true};
             },
             negativeCompare : function (expected, uniqueIdentifier, done){
-
                 var fullFilePath = path.resolve(expectedResultsFolder, sanitizeFilename(uniqueIdentifier) + '.txt');
-
                 var readFilePromise = new Promise(function(resolve, reject) {
                     fs.readFile(fullFilePath, function(err, data) {
                         if (err) {
@@ -55,7 +47,6 @@ var matchers = {
                         }
                     });
                 });
-
                 readFilePromise.then(function(actual) {
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)/g,'\n'), actual.toString().replace(/(\r\n)/g,'\n'))){
                         done.fail("Expected '" + actual + "' NOT to Equal '" + expected + "'.");
@@ -72,9 +63,7 @@ var matchers = {
     toContainFileContents: function(defaultMatchers) {
         return {
             compare: function(expected, uniqueIdentifier, done) {
-
                 var fullFilePath = path.resolve(expectedResultsFolder, sanitizeFilename(uniqueIdentifier) + '.txt');
-
                 var readFilePromise = new Promise(function(resolve, reject) {
                     fs.readFile(fullFilePath, function(err, data) {
                         if (err) {
@@ -84,30 +73,21 @@ var matchers = {
                         }
                     });
                 });
-
                 readFilePromise.then(function(actual) {
-
                     if(defaultMatchers.contains(expected.toString().replace(/(\r\n)/g,'\n'),actual.toString().replace(/(\r\n)/g,'\n'))){
                         deleteDidNotMatchFile(fullFilePath);
                         return done();//{pass:true};
                     }
-
                     writeDidNotMatchFile(fullFilePath, expected);
                     done.fail("Expected '" + expected.toString().replace(/(\r\n)/g,'\n') + "' to Contain '" + actual.toString().replace(/(\r\n)/g,'\n') + "'.");
-
                 }).catch(function(error) {
-
                     writeDidNotMatchFile(fullFilePath, expected);
                     done.fail(error);
-
                 });
-
                 return{pass:true};
             },
             negativeCompare : function (expected, uniqueIdentifier, done){
-
                 var fullFilePath = path.resolve(expectedResultsFolder, sanitizeFilename(uniqueIdentifier) + '.txt');
-
                 var readFilePromise = new Promise(function(resolve, reject) {
                     fs.readFile(fullFilePath, function(err, data) {
                         if (err) {
@@ -117,7 +97,6 @@ var matchers = {
                         }
                     });
                 });
-
                 readFilePromise.then(function(actual) {
                     if(defaultMatchers.contains(expected.toString().replace(/(\r\n)/g,'\n'),actual.toString().replace(/(\r\n)/g,'\n'))){
                         done.fail("Expected '" + actual + "' NOT to Contain '" + expected + "'.");
@@ -134,9 +113,7 @@ var matchers = {
     toEqualFileContentsIgnoreLineBreaks: function(defaultMatchers) {
         return {
             compare: function(expected, uniqueIdentifier, done) {
-
                 var fullFilePath = path.resolve(expectedResultsFolder, sanitizeFilename(uniqueIdentifier) + '.txt');
-
                 var readFilePromise = new Promise(function(resolve, reject) {
                     fs.readFile(fullFilePath, function(err, data) {
                         if (err) {
@@ -146,9 +123,7 @@ var matchers = {
                         }
                     });
                 });
-
                 readFilePromise.then(function(actual) {
-
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)|\n/g,''), actual.toString().replace(/(\r\n)|\n/g,''))){
                         deleteDidNotMatchFile(fullFilePath);
                         return done();//{pass:true};
@@ -157,18 +132,13 @@ var matchers = {
 
                     done.fail("Expected '" + expected.toString().replace(/(\r\n)|\n/g,'') + "' to Equal '" + actual.toString().replace(/(\r\n)|\n/g,'') + "'.");
                 }).catch(function(error) {
-
                     writeDidNotMatchFile(fullFilePath, expected);
-
                     done.fail(error);
                 });
-
                 return{pass:true};
             },
             negativeCompare : function (expected, uniqueIdentifier, done){
-
                 var fullFilePath = path.resolve(expectedResultsFolder, sanitizeFilename(uniqueIdentifier) + '.txt');
-
                 var readFilePromise = new Promise(function(resolve, reject) {
                     fs.readFile(fullFilePath, function(err, data) {
                         if (err) {
@@ -178,7 +148,6 @@ var matchers = {
                         }
                     });
                 });
-
                 readFilePromise.then(function(actual) {
                     if(defaultMatchers.equals(expected.toString().replace(/(\r\n)|\n/g,''), actual.toString().replace(/(\r\n)|\n/g,''))){
                         done.fail("Expected '" + actual.toString().replace(/(\r\n)|\n/g,'') + "' NOT to Equal '" + expected.toString().replace(/(\r\n)|\n/g,'') + "'.");
@@ -207,7 +176,6 @@ function deleteDidNotMatchFile(fullFilePath) {
         return e;
     }
 }
-
 
 function writeDidNotMatchFile(fullFilePath, expected) {
     try{
