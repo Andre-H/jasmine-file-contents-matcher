@@ -7,9 +7,9 @@ exports.deleteDidNotMatchFile = function (fullFilePath){
         return 0;
     }
     catch (e){
-        if (e.message && e.message.indexOf('ENOENT') > -1) {
-            console.log('Tried to remove an unused placeholder file: ' + failFilePath + ', but an error occured:' + e +
-                '. This should not affect any test results.');
+        if (e.message && e.message.indexOf('ENOENT') == -1) {
+            console.log('Tried to remove an unused placeholder file: ' + failFilePath + ', but an unexpected error' +
+                ' occured: ' + e + '. This should not affect any test results.');
         }
         return e;
     }
@@ -23,7 +23,8 @@ exports.writeDidNotMatchFile = function (fullFilePath, expected) {
         return 0;
     }
     catch (e) {
-        console.log('Tried to create a expected result file: ' + failFilePath + ', but an error occurred: ' + e);
+        console.log('Tried to output the actual results to a placeholder file: ' + failFilePath + ', but an' +
+            ' error occurred: ' + e);
         return e;
     }
 };
