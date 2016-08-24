@@ -1,6 +1,6 @@
 {
   "name": "node-jasmine-file-contents-matcher",
-  "version": "0.2.0",
+  "version": "0.1.3",
   "description": "A Jasmine 2 custom matcher that compares a result against the contents of a file.",
   "main": "index.js",
   "scripts": {
