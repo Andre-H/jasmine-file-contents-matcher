@@ -28,16 +28,18 @@ it('should match when the file content contains the expected', function (done) {
 
 //You can use the .not modifier
 
-it('should not match when file is not equal contain expected string', function(done) {
+it('should not match when file content is not identical to the expected', function(done) {
     expect('Not going to match').not.toEqualFileContents('file-name', done);
 });
 
-it('should not match when the file content doesn`t contain the expected string', function (done) {
+it('should not match when the file content doesn`t contain the expected', function (done) {
     expect('Not going to match').not.toContainFileContents('file-name', done);
 });
 ```
 
-The filenames must be whatever is passed as the first parameter in the matcher call plus the `'.txt'` extension. `resources/expectedresults/file-name.txt` in the examples above.
+The filenames must be whatever is passed as the first parameter in the matcher call plus the `'.txt'` extension.
+
+In the example above, the expected result file should be: `resources/expectedresults/file-name.txt`.
 
 ###The following matchers are available
 
