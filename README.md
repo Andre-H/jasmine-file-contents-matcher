@@ -1,9 +1,9 @@
 # node-jasmine-file-contents-matcher
 A Jasmine 2 custom matcher that compares a result against the contents of a file.
 
-Build status: [![Run Status](https://api.shippable.com/projects/5784213e3be4f4faa56c79de/badge?branch=master)](https://app.shippable.com/projects/5784213e3be4f4faa56c79de)
+Build status: [![Run Status](https://api.shippable.com/projects/5c241f57c05bae0700ce9a01/badge?branch=master)](https://api.shippable.com/projects/5c241f57c05bae0700ce9a01/badge?branch=master)
 
-Test coverage: [![Coverage Badge](https://api.shippable.com/projects/5784213e3be4f4faa56c79de/coverageBadge?branch=master)](https://app.shippable.com/projects/5784213e3be4f4faa56c79de)
+Test coverage: [![Coverage Badge](https://api.shippable.com/projects/5c241f57c05bae0700ce9a01/coverageBadge?branch=master)](https://api.shippable.com/projects/5c241f57c05bae0700ce9a01/coverageBadge?branch=master)
 
 ## Installation
 `npm install node-jasmine-file-contents-matcher`
